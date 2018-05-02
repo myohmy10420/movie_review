@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'paperclip', '~> 6.0.0'
 gem 'bootstrap-sass'
+gem 'searchkick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
