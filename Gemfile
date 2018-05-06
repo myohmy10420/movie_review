@@ -28,6 +28,7 @@ group :development, :test do
 
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem 'capistrano-rails-db'
 end
 
 group :development do
