@@ -25,7 +25,7 @@ set :deploy_to, "/home/deploy/moview_review"
 append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/system/movies/images/000/000"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 set :passenger_restart_with_touch, true
 
 # Default value for default_env is {}
