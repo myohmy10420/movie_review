@@ -9,7 +9,7 @@ set :repo_url, "git@github.com:myohmy10420/movie_review.git"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/moview_review"
+set :deploy_to, "/home/deploy/movie_review"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
