@@ -31,3 +31,16 @@ body {
     padding-bottom: 8px;
   }
 }
+
+.form {
+  padding: 40px;
+  border-radius: 5px;
+  &--basic {
+    display: inline-block;
+    background-color: lighten(#000, 93.5%);
+  }
+  &-devise {
+    display: inline-block;
+    background-color: lighten(#000, 93.5%);
+  }
+}

@@ -1,4 +1,4 @@
-<%= form_for([@movie, @review]) do |form| %>
+<%= form_for([@movie, @review]) do |f| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -15,13 +15,13 @@
     <div class="star-rating"></div>
   </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, id: :review_comment %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label "評論" %>
+    <%= f.text_area :comment, class: "form-control", id: :review_comment %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.submit "發表評論", class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>
 

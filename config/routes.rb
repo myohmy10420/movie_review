@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :movies do
     collection do
-      get 'search'
+      match 'search' => 'movies#search', via: [:get, :post], as: :search
     end
     resources :reviews, except: [:show, :index]
   end

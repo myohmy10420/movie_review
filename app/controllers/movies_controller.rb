@@ -1,21 +1,22 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :find_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  def search
-    if params[:search].present?
-      @movies = Movie.search(params[:search])
-    else
-      @movies = Movie.all
-    end
-  end
+  # def search
+  #   if params[:search].present?
+  #     @movies = Movie.search(params[:search])
+  #   else
+  #     @movies = Movie.all
+  #   end
+  # end
 
   def index
-    @movies = Movie.all
+    @q = Movie.ransack(params[:q])
+    @movies = @q.result(distinct: true)
   end
 
   def show
-    @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
+    @reviews = Review.where(movie: @movie).recent
 
     if @reviews.blank?
       @avg_review = 0
@@ -66,11 +67,12 @@ class MoviesController < ApplicationController
   end
 
   private
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
 
-    def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
-    end
+  def find_movie
+    @movie = Movie.find(params[:id])
+  end
+
+  def movie_params
+    params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
+  end
 end

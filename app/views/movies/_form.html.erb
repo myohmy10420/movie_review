@@ -1,4 +1,4 @@
-<%= form_for @movie, html: { multipart: true } do |form| %>
+<%= form_for @movie, html: { multipart: true } do |f| %>
   <% if movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -11,37 +11,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :movie_title %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label :電影名稱 %>
+    <%= f.text_field :title, class: "form-control", id: :movie_title, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :movie_description %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label :電影敘述 %>
+    <%= f.text_area :description, class: "form-control", id: :movie_description, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :movie_length %>
-    <%= form.text_field :movie_length, id: :movie_movie_length %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label :電影長度 %>
+    <%= f.text_field :movie_length, class: "form-control", id: :movie_movie_length, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :director %>
-    <%= form.text_field :director, id: :movie_director %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label :導演 %>
+    <%= f.text_field :director, class: "form-control", id: :movie_director, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.text_field :rating, id: :movie_rating %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label "電影評級" %>
+    <%= f.select(:rating, options_for_select(Movie::RATING_LEVEL, :selected => @movie.rating), {:include_blank => "請選擇"}, { :class => 'form-control' , :required => true}) %>
   </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+  <div class="form-group" style="width: 300px;">
+    <%= f.label :電影海報 %>
+    <%= f.file_field :image, required: true, accept:'image/png,image/jpeg', id: :movie_image %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div id="movie_image_preview"></div>
+
+  <% if @movie.image.present? %>
+    <%= image_tag @movie.image.url(:medium), :id => "old_movie_image" %>
+  <% end %>
+
+  <div class="form-group" style="width: 300px;">
+    <%= f.submit "刊登電影資訊", class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#movie_image').on('change', function(event) {
+      let files = event.target.files;
+      let image = files[0]
+      let reader = new FileReader();
+      reader.onload = function(file) {
+        let img = new Image(400, 600);
+        img.src = file.target.result;
+        $('#movie_image_preview').html(img);
+        $('#old_movie_image').css("display", "none");
+      }
+      reader.readAsDataURL(image);
+    });
+  });
+</script>

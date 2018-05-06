@@ -1,6 +1,8 @@
-<h1>Editing Movie</h1>
+<div class="form form--basic">
+  <h1>Editing Movie</h1>
 
-<%= render 'form', movie: @movie %>
+  <%= render 'form', movie: @movie %>
 
-<%= link_to 'Show', @movie %> |
-<%= link_to 'Back', movies_path %>
+  <%= link_to '回上一頁', @movie %> |
+  <%= link_to '回電影列表', movies_path %>
+</div>

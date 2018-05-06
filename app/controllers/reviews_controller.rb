@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       redirect_to @movie
+      flash[:notice] = "評論成功！"
     else
       render 'new'
     end

@@ -1,11 +1,25 @@
 <% if !user_signed_in? %>
   <div class="jumbotron">
-    <h1>Your Favorite Movies Reviewed</h1>
-    <p>Hashtag hoodie mumblecore selfies. Authentic keffiyeh leggings Kickstarter, narwhal jean shorts XOXO Vice Austin cardigan. Organic drinking vinegar freegan pickled.</p>
-    <p><%= link_to "Sign Up To Write A Review", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+    <h1>評論最喜歡的電影</h1>
+    <p>每個人心中都住著一位藝術家，在這裡刊登看過的電影，留下最簡單的分數或心得，一圓評論家的夢！</p>
+    <p><%= link_to "馬上註冊成為一位評論家", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
   </div>
 <% end %>
-
+<div>
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 col-xs-8">
+      <%= search_form_for @q, url: root_path do |f| %>
+        <div class="input-group">
+          <%= f.search_field :title_cont, class: "form-control", placeholder: "收尋電影..." %>
+          <span class="input-group-btn">
+            <%= f.submit "收尋", class: "btn btn-default" %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+</div>
 <div class="row">
   <% @movies.each do |movie| %>
     <div class="col-sm-6 col-md-3">
