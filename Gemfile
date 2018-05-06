@@ -19,11 +19,15 @@ gem 'devise'
 gem 'paperclip', '~> 6.0.0'
 gem 'bootstrap-sass'
 gem 'ransack'
+gem 'pg'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
 
 group :development do
