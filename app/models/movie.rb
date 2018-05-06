@@ -5,6 +5,5 @@ class Movie < ApplicationRecord
   has_many :reviews
 
   has_attached_file :image, styles: { medium: "400x600#" }
-  validates_attachment :image, presence: true,
-    content_type: { content_type: "image/png,image/jpeg" }
+  validates_attachment_content_type :image, presence: true, content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 end

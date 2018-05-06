@@ -1,23 +1,22 @@
 <%= form_for([@movie, @review]) do |f| %>
-  <% if review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-      <% review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <div class="form-group" style="width: 300px;">
+    <div class="field">
+      <div class="star-rating"></div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <div class="star-rating"></div>
+    <% if review.errors.messages[:rating].present? %>
+      <span style="color: red;">請給分數</span>
+    <% end %>
   </div>
 
   <div class="form-group" style="width: 300px;">
-    <%= f.label "評論" %>
+    <%= f.label "留下評論" %>
     <%= f.text_area :comment, class: "form-control", id: :review_comment %>
+
+    <% if review.errors.messages[:comment].present? %>
+      <span style="color: red;">不得為空</span>
+    <% end %>
   </div>
 
   <div class="form-group" style="width: 300px;">

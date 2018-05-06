@@ -43,15 +43,21 @@
         <% else %>
           <% @reviews.each do |review| %>
             <div class="reviews">
+              <%= content_tag(:b, review.user.email + "的評論") %>
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p><%= review.comment %></p>
+              <%= link_to("編輯", edit_movie_review_path(review.movie, review), class: "btn btn-sm btn-default") %>
             </div>
           <% end %>
         <% end %>
 
       </div>
     </div>
-    <%= link_to '編輯資訊', edit_movie_path(@movie) %> |
+
+    <% if @movie.user_id == current_user.id %>
+      <%= link_to '編輯資訊', edit_movie_path(@movie) %> |
+      <%= link_to('刪除電影', movie_path(@movie), method: :delete, data: {confirm: "確定要刪除嗎?"}) %> |
+    <% end %>
     <%= link_to '回上一頁', movies_path %>
   </div>
 </div>
