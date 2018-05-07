@@ -10,9 +10,9 @@
     <div class="col-lg-4 col-sm-6 col-xs-8">
       <%= search_form_for @q, url: root_path do |f| %>
         <div class="input-group">
-          <%= f.search_field :title_cont, class: "form-control", placeholder: "收尋電影..." %>
+          <%= f.search_field :title_cont, class: "form-control", placeholder: "搜尋電影..." %>
           <span class="input-group-btn">
-            <%= f.submit "收尋", class: "btn btn-default" %>
+            <%= f.submit "搜尋", class: "btn btn-default" %>
           </span>
         </div>
       <% end %>
