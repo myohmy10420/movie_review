@@ -49,6 +49,7 @@
               <%= link_to("編輯", edit_movie_review_path(review.movie, review), class: "btn btn-sm btn-default") %>
             </div>
           <% end %>
+          <%= will_paginate @reviews %>
         <% end %>
 
       </div>

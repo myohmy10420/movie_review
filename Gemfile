@@ -18,6 +18,7 @@ gem 'devise'
 gem 'paperclip', '~> 6.0.0'
 gem 'bootstrap-sass'
 gem 'ransack'
+gem 'will_paginate', '~> 3.1.0'
 gem 'pg'
 
 group :development, :test do

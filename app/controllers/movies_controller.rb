@@ -7,12 +7,13 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @reviews = Review.where(movie: @movie).recent
+    @reviews = Review.where(movie: @movie).recent.paginate(:page => params[:page], :per_page => 5)
+    @all_reviews = Review.where(movie: @movie).all
 
     if @reviews.blank?
       @avg_review = 0
     else
-      @avg_review = @reviews.average(:rating).round(2)
+      @avg_review = @all_reviews.average(:rating).round(2)
     end
   end
 
