@@ -13,11 +13,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= search_form_for @q, url: search_path, class: "movie_search" do |f| %>
+          <%= form_tag search_path, method: :get, class: "movie_search" do |f| %>
             <div class="input-group">
-              <%= f.search_field :title_cont, class: "form-control", placeholder: "搜尋電影..." %>
+              <%= text_field_tag :q, "", class: "form-control", placeholder: "搜尋電影..." %>
               <span class="input-group-btn">
-                <%= f.submit "搜尋", class: "btn btn-default" %>
+                <%= submit_tag "搜尋", class: "btn btn-default" %>
               </span>
             </div>
           <% end %>
