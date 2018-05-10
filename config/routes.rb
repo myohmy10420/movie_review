@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show, :index]
   end
 
+  get "search", :to => "search#index"
+
   root to: "movies#index"
 end
