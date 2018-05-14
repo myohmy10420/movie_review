@@ -36,9 +36,11 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "註冊", new_user_registration_path, class: "active" %></li>
-          <li><%= link_to "登入", new_user_session_path, class: "active" %></li>
+          <li><%= link_to t("devise.registrations.new.sign_up"), new_user_registration_path, class: "active" %></li>
+          <li><%= link_to t("devise.sessions.new.sign_in"), new_user_session_path, class: "active" %></li>
         <% end %>
+        <li><%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %></li>
+        <li><%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

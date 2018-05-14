@@ -20,6 +20,7 @@ gem 'bootstrap-sass'
 gem 'ransack'
 gem 'will_paginate', '~> 3.1.0'
 gem 'pg'
+gem "rails-i18n"
 
 group :development, :test do
   gem 'sqlite3'

@@ -5,7 +5,7 @@
     <%= devise_error_messages! %>
 
     <div class="form-group" style="width: 300px;">
-      <%= f.label "電子信箱" %>
+      <%= f.label t("activerecord.attributes.user.email") %>
       <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
     </div>
 
@@ -14,26 +14,26 @@
     <% end %>
 
     <div class="form-group" style="width: 300px;">
-      <%= f.label "新密碼" %> <i>(如不更動請空白)</i>
+      <%= f.label t("devise.passwords.edit.new_password") %> <i>(<%= t("devise.passwords.edit.new_password_tip") %>)</i>
       <%= f.password_field :password, class: "form-control" %>
       <% if @minimum_password_length %>
         <br />
-        <em>新密碼至少 <%= @minimum_password_length %> 個字元</em>
+        <em><%= t("devise.passwords.character_amount", :number => "6") %></em>
       <% end %>
     </div>
 
     <div class="form-group" style="width: 300px;">
-      <%= f.label "確認新密碼" %>
+      <%= f.label t("devise.passwords.edit.confirm_new_password") %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
 
     <div class="form-group" style="width: 300px;">
-      <%= f.label "當前密碼" %>
+      <%= f.label t("activerecord.attributes.user.current_password") %>
       <%= f.password_field :current_password, class: "form-control", required: true %>
     </div>
 
     <div class="form-group" style="width: 300px;">
-      <%= f.submit "確認更新", class: "btn btn-lg btn-primary" %>
+      <%= f.submit t("devise.registrations.edit.update"), class: "btn btn-lg btn-primary" %>
     </div>
   <% end %>
 
