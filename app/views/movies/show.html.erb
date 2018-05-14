@@ -46,7 +46,9 @@
               <%= content_tag(:b, review.user.email + "的評論") %>
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p><%= review.comment %></p>
-              <%= link_to("編輯", edit_movie_review_path(review.movie, review), class: "btn btn-sm btn-default") %>
+              <% if current_user && current_user.id == review.user_id %>
+                <%= link_to("編輯", edit_movie_review_path(review.movie, review), class: "btn btn-sm btn-default") %>
+              <% end %>
             </div>
           <% end %>
           <%= will_paginate @reviews %>
@@ -55,7 +57,7 @@
       </div>
     </div>
 
-    <% if @movie.user_id == current_user.id %>
+    <% if current_user && current_user.id == @movie.user_id %>
       <%= link_to '編輯資訊', edit_movie_path(@movie) %> |
       <%= link_to('刪除電影', movie_path(@movie), method: :delete, data: {confirm: "確定要刪除嗎?"}) %> |
     <% end %>
